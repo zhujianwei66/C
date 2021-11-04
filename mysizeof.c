@@ -1,10 +1,10 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 测试每种数据类型的大小
  * @version: 
  * @Author: ZhuJianwei
  * @Date: 2021-11-04 19:33:43
  * @LastEditors: ZhuJianwei
- * @LastEditTime: 2021-11-04 20:33:54
+ * @LastEditTime: 2021-11-04 20:36:57
  */
 #include"stdio.h"
 
