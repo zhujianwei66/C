@@ -4,11 +4,11 @@
  * @Author: ZhuJianwei
  * @Date: 2021-11-04 19:33:43
  * @LastEditors: ZhuJianwei
- * @LastEditTime: 2021-11-04 19:44:21
+ * @LastEditTime: 2021-11-04 20:33:54
  */
 #include"stdio.h"
 
-int main(){
+int main(int argc,char *agrv[]){
     char c;
     short s;
     int i;
