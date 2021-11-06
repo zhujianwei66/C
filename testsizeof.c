@@ -4,7 +4,7 @@
  * @Author: ZhuJianwei
  * @Date: 2021-11-04 19:33:43
  * @LastEditors: ZhuJianwei
- * @LastEditTime: 2021-11-04 20:36:57
+ * @LastEditTime: 2021-11-06 16:28:09
  */
 #include"stdio.h"
 
@@ -22,5 +22,6 @@ int main(int argc,char *agrv[]){
     printf("long is %d Bit\n",sizeof(l));
     printf("float is %d Bit\n",sizeof(l));
     printf("double is %d Bit\n",sizeof(l));
+    printf("sizeof('a') is %d Bit\n",sizeof('a'));
     return 0;
 }
