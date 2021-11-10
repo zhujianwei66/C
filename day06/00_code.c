@@ -4,14 +4,15 @@
         2.多字符串读取
         3.函数的调用
         4.给函数传入数组参数
-        
+        5.字符数组作为函数参数
  * @version: 
  * @Author: ZhuJianwei
  * @Date: 2021-11-10 10:09:52
  * @LastEditors: ZhuJianwei
- * @LastEditTime: 2021-11-10 16:40:44
+ * @LastEditTime: 2021-11-10 17:27:17
  */
 #include "stdio.h"
+#include "string.h"
 
 //函数声明
 void test01();
@@ -20,17 +21,37 @@ int my_add(int num1, int num2); //两个数相加
 void test03();
 void inputIntarray(int arr[], int arrSize);  //从键盘输入中获取数据
 void printfIntarray(int arr[], int arrSize); //输出数组
-void sortIntarray(int arr[], int arrSize);
+void sortIntarray(int arr[], int arrSize);   //对整形数组排序
 void test04();
+void myGetstr(char str[], int strSize);
+int myGetSize(char str[]);
+void test05();
 
 //函数入口
 int main(int argc, char *argv[])
 {
-    test04();
+    test05();
     return 0;
 }
 
 //函数实现
+int myGetSize(char str[])
+{
+    int i = 0;
+    while (str[i])
+    {
+        i++;
+    }
+    return i;
+}
+void myGetStr(char str[], int strSize)
+{
+    printf("请输入一个字符串：\n");
+    fgets(str, strSize, stdin);
+    //去掉空格
+    str[strlen(str) - 1] = '\0';
+    return;
+}
 void inputIntarray(int arr[], int arrSize)
 {
     int i = 0;
@@ -54,7 +75,7 @@ void sortIntarray(int arr[], int arrSize)
 {
     int i = 0;
     //使用选择法排序
-    for (i = 0; i < arrSize; i++)
+    for (i = 0; i < arrSize - 1; i++)
     {
         int min_flag = i; //假设最小值为第i个
         int j = 0;
@@ -137,5 +158,16 @@ void test04()
     //输出整形数组
     printf("排序后数组为：\n");
     printfIntarray(arr, arrSize);
+    return;
+}
+void test05()
+{
+    //定义字符数组
+    char str[128] = "";
+    int strSize = sizeof(str);
+    //获取字符数组
+    myGetStr(str, strSize); //注意：不能在函数内求str大小，编译器会将数组形参优化为指针
+    //计算字符数组的长度
+    printf("字符串长度为：%d\n", myGetSize(str));
     return;
 }
