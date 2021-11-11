@@ -5,11 +5,14 @@
         3.指针变量指向的类型决定了取值的宽度
         4.指针变量指向的类型决定了+1的跨度
         5.综合案例:取任意合法地址的内容
+        6.万能指针 void *
+        注意：不可直接对void *解引用，不可对未初始化的指针操作，初始化为空也不可操作，指针不要越界访问非法内存。
+        char * ch = 'a';int *p = &ch; *p;//越界访问
  * @version: 
  * @Author: ZhuJianwei
  * @Date: 2021-11-11 17:42:24
  * @LastEditors: ZhuJianwei
- * @LastEditTime: 2021-11-11 20:29:47
+ * @LastEditTime: 2021-11-11 21:50:01
  */
 #include <stdio.h>
 void test01()
@@ -63,14 +66,33 @@ void test05()
     int num = 0x01020304;
     short *p1 = (short *)&num;
     char *p2 = (char *)&num;
-    p2 += 2;
-    printf("*(p1+1) = %#x \n", *(p1 + 1)); //取出0102
-    printf("*(p2+2) = %#x \n", *p2);       //取出02
+    char *p3 = (char *)&num;
+    short *p4 = (short *)&num;
 
+    printf("*(p1+1) = %#x \n", *(p1 + 1)); //取出0102
+    p2 += 2;
+    printf("*(p2+2) = %#x \n", *p2); //取出02
+    p3 += 1;
+    printf("*(short*)p3 = %#x \n", *(short *)p3);                          //取出0203
+    printf("*(short*)((char*)p4+1) = %#x \n", *(short *)((char *)p4 + 1)); //取出0203
+    return;
+}
+void test06()
+{
+    void *p = NULL;
+    int num = 10;
+    char ch = 'a';
+    short sh = 1;
+    p = &num;
+    printf("%d \n", *(int *)p);
+    p = &ch;
+    printf("%c \n", *(char *)p);
+    p = &sh;
+    printf("%d \n", *(short *)p);
     return;
 }
 int main(int argc, char *argv[])
 {
-    test05();
+    test06();
     return 0;
 }
