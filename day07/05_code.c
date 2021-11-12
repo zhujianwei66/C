@@ -6,13 +6,22 @@
         4.指针变量指向的类型决定了+1的跨度
         5.综合案例:取任意合法地址的内容
         6.万能指针 void *
+        7.数组的指针
+        8.在使用中[]等价于*()
+        9.&arr[0] = &*(arr+0) = arr    -----所以arr代表的是数组首地址
+        10.指针之间的关系
+            （1）两指针相减，等于他们间的元素个数
+            （2）两指针赋值（p1=p2)，他们指向同一处
+            （3）两指针判断相等（p1==p2),它们是否指向同一处
+            （4）两指针判断大小（> < >= <= !=),判断它们的位置关系
+            （5）两指针不能相加！！
         注意：不可直接对void *解引用，不可对未初始化的指针操作，初始化为空也不可操作，指针不要越界访问非法内存。
         char * ch = 'a';int *p = &ch; *p;//越界访问
  * @version: 
  * @Author: ZhuJianwei
  * @Date: 2021-11-11 17:42:24
  * @LastEditors: ZhuJianwei
- * @LastEditTime: 2021-11-11 21:50:01
+ * @LastEditTime: 2021-11-12 10:12:48
  */
 #include <stdio.h>
 void test01()
@@ -91,8 +100,46 @@ void test06()
     printf("%d \n", *(short *)p);
     return;
 }
+void test07()
+{
+    int arr[5] = {10, 20, 30, 40, 50};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int i = 0;
+    for (i = 0; i < len; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    int *p = arr;
+    for (i = 0; i < len; i++)
+    {
+        printf("%d ", *(p + i));
+    }
+    printf("\n");
+    for (i = 0; i < len; i++)
+    {
+        printf("%d ", *(arr + i));
+    }
+    printf("\n");
+    return;
+}
+void test08()
+{
+    int arr[5] = {10, 20, 30, 40, 50};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    printf("arr[3] = %d \n", arr[3]);
+    printf("*(arr+3) = %d \n", *(arr + 3));
+    printf("------------------------------\n");
+    printf("*(3+arr) = %d \n", *(3 + arr));
+    printf("3[arr] = %d \n", 3 [arr]);
+    //[]是*()的缩写，[]左边的值放在+的左边，[]里边的值放在+的右边，再整体解引用
+
+    return;
+}
 int main(int argc, char *argv[])
 {
-    test06();
+    test08();
     return 0;
 }
