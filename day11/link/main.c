@@ -4,7 +4,7 @@
  * @Author: ZhuJianwei
  * @Date: 2021-11-15 14:45:41
  * @LastEditors: ZhuJianwei
- * @LastEditTime: 2021-11-15 21:56:03
+ * @LastEditTime: 2021-11-15 22:34:52
  */
 #include <stdio.h>
 #include <string.h>
@@ -15,13 +15,13 @@ void help(void)
 {
     printf("***************************\n");
     printf("*help:帮助信息            *\n");
-    printf("*insert: 插入链表节点     *\n"); //存在问题
+    printf("*insert: 插入链表节点     *\n");
     printf("*print:遍历链表节点       *\n");
     printf("*search:查询链表某个节点  *\n");
     printf("*delete:删除链表某个节点  *\n");
     printf("*free:释放整个链表        *\n");
     printf("*reverse:翻转链表         *\n");
-    printf("*sort:链表排序            *\n"); //存在问题
+    printf("*sort:链表排序            *\n");
     printf("*quit:退出程序            *\n");
     printf("***************************\n");
     return;

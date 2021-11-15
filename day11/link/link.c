@@ -4,7 +4,7 @@
  * @Author: ZhuJianwei
  * @Date: 2021-11-15 14:45:27
  * @LastEditors: ZhuJianwei
- * @LastEditTime: 2021-11-15 21:08:20
+ * @LastEditTime: 2021-11-15 22:32:16
  */
 #include <stdlib.h>
 #include "link.h"
@@ -89,14 +89,14 @@ STU *insert_link(STU *head, STU tmp)
     {
         //寻找插入的位置
         STU *pb = head, *pf = head;
-        while ((pb->num < pi->num) && (pb->next))
+        while ((pb->num < pi->num) && (pb->next != NULL))
         {
             pf = pb;
             pb = pb->next;
         }
         if (pb->num >= pi->num) //头部、中部插入
         {
-            if (pb = head)
+            if (pb == head)
             {
                 pi->next = head;
                 head = pi;
@@ -245,31 +245,34 @@ void sort_link(STU *head)
     }
     else
     {
-        STU *pd = head;
-        while (pd->next != NULL)
+        STU *p_i = head;
+        STU *p_j = head;
+        while (p_i->next != NULL)
         {
-            STU *pf = pd->next;
-            STU *min = pd;
-            while (pf != NULL)
+
+            STU *p_min = p_i;
+            p_j = p_min->next;
+            while (p_j != NULL)
             {
-                if (min->num > pf->num)
+                if (p_min->num > p_j->num)
                 {
-                    min = pf;
+                    p_min = p_j;
                 }
-                pf = pf->next;
+                p_j = p_j->next;
             }
-            if (min != pd)
+            if (p_min != p_i)
             {
                 //先内容整体交换
-                STU *tmp = pd;
-                pd = min;
-                min = tmp;
+                STU tmp = *p_i;
+                *p_i = *p_min;
+                *p_min = tmp;
                 //然后再交换一次指针域
-                tmp->next = pd->next;
-                pd->next = min->next;
-                min->next = tmp->next;
+                tmp.next = p_i->next;
+                p_i->next = p_min->next;
+                p_min->next = tmp.next;
             }
-            pd = pd->next;
+            p_i = p_i->next;
         }
+        printf("排序完成！\n");
     }
 }
