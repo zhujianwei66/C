@@ -4,7 +4,7 @@
  * @Author: ZhuJianwei
  * @Date: 2021-11-16 10:18:18
  * @LastEditors: ZhuJianwei
- * @LastEditTime: 2021-11-16 13:16:00
+ * @LastEditTime: 2021-11-16 15:08:57
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,8 +38,10 @@ int main(int argc, char *argv[])
         scanf("%d %s", &tmp.num, tmp.name);
         insert_link(&head, tmp);
     }
+
     //遍历链表
     print_link(head);
+
     //查询
     printf("请输入需要查询的学号：");
     int num = 0;
@@ -53,10 +55,16 @@ int main(int argc, char *argv[])
     {
         printf("%d %s\n", ret->num, ret->name);
     }
+
+    //删除链表
     printf("请输入需要删除的学号：");
     scanf("%d", &num);
     delete_link(&head, num);
+
+    //打印链表观察是否删除成功
     print_link(head);
+
+    //释放链表
     free_link(&head);
     return 0;
 }
@@ -71,8 +79,16 @@ void free_link(STU **p_head)
     }
     else
     {
-        ;
+        STU *pn;
+        do
+        {
+            pn = head;
+            head = head->next;
+            free(pn);
+        } while (pn != *p_head);
+        printf("链表释放完成\n");
     }
+    *p_head = NULL;
     return;
 }
 
