@@ -8,12 +8,12 @@
  */
 #ifndef __CALC_H__
 #define __CALC_H__
-void myinput(int *num1, int *num2);
-int myadd(int num1, int num2);
-int mymul(int num1, int num2);
-int mydiv(int num1, int num2);
-int mysub(int num1, int num2);
+void myinput(double *num1, double *num2);
+double myadd(double num1, double num2);
+double mymul(double num1, double num2);
+double mydiv(double num1, double num2);
+double mysub(double num1, double num2);
 void print_help();
-typedef int OP(int, int);
+typedef double OP(double, double);
 OP *funcfactory(char *op); //算数工厂
 #endif
